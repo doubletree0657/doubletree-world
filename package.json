@@ -1,0 +1,26 @@
+{
+  "name": "doubletree-world",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.23.4"
+  },
+  "scripts": {
+    "dev": "astro dev --host 127.0.0.1",
+    "check": "astro check && tsc --project tsconfig.functions.json",
+    "build": "astro build",
+    "preview": "wrangler pages dev dist --ip 127.0.0.1",
+    "test": "node --test tests/*.test.ts"
+  },
+  "dependencies": {
+    "astro": "7.4.2"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.12",
+    "@types/node": "^24.19.2",
+    "typescript": "^5.9.3",
+    "wrangler": "4.153.0"
+  },
+  "packageManager": "pnpm@11.25.0"
+}

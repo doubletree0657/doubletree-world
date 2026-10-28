@@ -1,0 +1,36 @@
+export const content = {
+  en: {
+    lang: 'en', description: 'The personal world of DoubleTree. Music, cosplay, computer science, and everyday discoveries.',
+    skip: 'Skip to content', home: 'A personal collection', language: 'Choose language',
+    eyebrow: 'A SMALL CORNER OF THE INTERNET', hello: "Hi, I'm", name: 'DoubleTree.',
+    intro: 'A software engineer who loves music, cosplay, and computer science.',
+    note: 'This is a little place where I collect the things I love and the things I create.',
+    explore: 'Explore my world', edition: 'VOL. 01 — THE BEGINNING',
+    margin: 'A place to grow, slowly.', directory: 'The collection', directoryNote: 'Different interests, one small world.',
+    soon: 'Coming soon', topics: [
+      ['Yorushika', 'Music, words, and the memories in between.', 'MUSIC'],
+      ['Cosplay', 'Characters brought into the everyday.', 'PHOTOGRAPHY'],
+      ['Computer Science & AI', 'Things I learn. Things I build.', 'EXPERIMENTS'],
+      ['Journal', 'Small observations along the way.', 'LIFE'],
+      ['About Me', 'The person behind this little world.', 'PERSONAL'],
+    ], footer: 'An ongoing personal project.', closing: 'Made with care. Growing at my own pace.',
+    treeLabel: 'Two trees standing quietly on a hill',
+  },
+  zh: {
+    lang: 'zh-CN', description: 'DoubleTree 的个人世界。记录音乐、Cosplay、计算机科学，以及生活中的细小发现。',
+    skip: '跳转到正文', home: '一份私人收藏', language: '选择语言',
+    eyebrow: '互联网里的一小片天地', hello: '你好，我是', name: 'DoubleTree。',
+    intro: '一名热爱音乐、Cosplay 和计算机科学的软件工程师。',
+    note: '这里是我的个人空间，用来记录我所热爱的事物，以及我亲手创造的作品。',
+    explore: '探索我的世界', edition: '第一期 · 从这里开始',
+    margin: '在这里，慢慢生长。', directory: '我的收藏', directoryNote: '不同的热爱，同一个小小世界。',
+    soon: '筹备中', topics: [
+      ['Yorushika', '音乐、文字，以及旋律之间的回忆。', '音乐'],
+      ['Cosplay', '让喜爱的角色，走进日常。', '摄影'],
+      ['计算机科学与 AI', '记录所学，创造所想。', '实验'],
+      ['生活手记', '收集沿途细小的观察与思考。', '生活'],
+      ['关于我', '认识这个小小世界背后的人。', '个人'],
+    ], footer: '一个持续生长的个人项目。', closing: '用心创造，按自己的节奏生长。',
+    treeLabel: '两棵树静静地站在山丘上',
+  },
+} as const;

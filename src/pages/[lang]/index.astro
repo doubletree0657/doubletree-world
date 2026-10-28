@@ -1,0 +1,62 @@
+---
+import Page from '../../layouts/Page.astro';
+import { content } from '../../i18n/content';
+export function getStaticPaths() { return [{ params: { lang: 'en' } }, { params: { lang: 'zh' } }]; }
+const locale = Astro.params.lang as 'en' | 'zh';
+const t = content[locale];
+---
+<Page lang={t.lang} description={t.description} locale={locale}>
+  <a class="skip" href="#main">{t.skip}</a>
+  <div class="page-shell">
+    <header class="masthead">
+      <a class="wordmark" href={`/${locale}/`} aria-label="DoubleTree's World"><span class="brand-icon" aria-hidden="true">↟↟</span> DoubleTree’s World<span class="brand-dot">.</span></a>
+      <span class="masthead-note">{t.home}</span>
+      <nav class="languages" aria-label={t.language}>
+        <a href="/language?lang=zh" lang="zh-CN" aria-current={locale === 'zh' ? 'page' : undefined}>中文</a>
+        <span aria-hidden="true">/</span>
+        <a href="/language?lang=en" lang="en" aria-current={locale === 'en' ? 'page' : undefined}>EN</a>
+      </nav>
+    </header>
+    <main id="main">
+      <section class="welcome" aria-labelledby="greeting">
+        <div class="welcome-copy">
+          <p class="eyebrow"><span class="small-dot" aria-hidden="true"></span>{t.eyebrow}</p>
+          <h1 id="greeting">{t.hello}<br /><em>{t.name}</em></h1>
+          <p class="intro">{t.intro}</p>
+          <p class="personal-note">{t.note}</p>
+          <a class="explore" href="#collection">{t.explore}<span aria-hidden="true">↗</span></a>
+        </div>
+        <figure class="landscape">
+          <div class="art-frame">
+            <span class="art-number" aria-hidden="true">01 / WORLD</span>
+            <svg viewBox="0 0 420 460" role="img" aria-label={t.treeLabel}>
+              <defs><pattern id="grain" width="7" height="9" patternUnits="userSpaceOnUse"><circle cx="1" cy="3" r=".5" fill="#6b7358" opacity=".15" /></pattern></defs>
+              <rect width="420" height="460" fill="#e6e8dd" />
+              <circle cx="304" cy="112" r="36" fill="#f3efe0" />
+              <path d="M0 346Q140 244 420 324V460H0Z" fill="#c5ccb8" />
+              <path d="M0 384Q215 275 420 355V460H0Z" fill="#a8b49a" />
+              <path d="M0 422Q220 341 420 390V460H0Z" fill="#8e9d80" />
+              <g stroke="#606c50" stroke-width="4" stroke-linecap="round"><path d="M170 338V210M259 324V160" /></g>
+              <g fill="#637456"><path d="m170 168-49 126h98Z" /><path d="m170 211-60 105h120Z" /></g>
+              <g fill="#52674b"><path d="m259 122-53 141h106Z" /><path d="m259 174-67 121h134Z" /></g>
+              <rect width="420" height="460" fill="url(#grain)" />
+            </svg>
+            <span class="art-caption">DOUBLETREE / EST. 2026</span>
+          </div>
+          <figcaption><span aria-hidden="true">↳</span> {t.margin}</figcaption>
+        </figure>
+      </section>
+      <section id="collection" class="collection" aria-labelledby="collection-title">
+        <div class="section-heading"><div><p class="eyebrow">{t.edition}</p><h2 id="collection-title">{t.directory}<span aria-hidden="true"> /</span></h2></div><p>{t.directoryNote}</p></div>
+        <ol class="topic-list">
+          {t.topics.map(([title, description, category], index) => <li class="topic">
+            <span class="topic-number">0{index + 1}</span>
+            <div class="topic-title"><span class="category">{category}</span><h3>{title}</h3></div>
+            <p>{description}</p><span class="status">{t.soon}<span aria-hidden="true"> ·</span></span>
+          </li>)}
+        </ol>
+      </section>
+    </main>
+    <footer><div><span class="footer-brand">DoubleTree’s World</span><p>{t.footer}</p></div><p class="closing">{t.closing}<br /><span>© {new Date().getFullYear()} DoubleTree</span></p></footer>
+  </div>
+</Page>

@@ -1,0 +1,13 @@
+storeDir: .pnpm-store
+nodeLinker: hoisted
+packageImportMethod: copy
+saveExact: true
+enableGlobalVirtualStore: false
+supportedArchitectures:
+  os: [current]
+  cpu: [current]
+  libc: [current]
+allowBuilds:
+  esbuild: true
+  workerd: true
+  sharp: true
