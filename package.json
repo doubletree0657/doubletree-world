@@ -8,10 +8,13 @@
   },
   "scripts": {
     "dev": "astro dev --host 127.0.0.1",
-    "check": "astro check && tsc --project tsconfig.functions.json",
+    "check": "pnpm types && astro check && tsc --project tsconfig.worker.json",
+    "types": "wrangler types",
     "build": "astro build",
-    "preview": "wrangler pages dev dist --ip 127.0.0.1",
-    "test": "node --test tests/*.test.ts"
+    "preview": "wrangler dev --local --ip 127.0.0.1",
+    "test": "node --test tests/*.test.ts",
+    "test:runtime": "pnpm build && node --test tests/runtime.test.mjs",
+    "deploy": "wrangler deploy"
   },
   "dependencies": {
     "astro": "7.4.2"

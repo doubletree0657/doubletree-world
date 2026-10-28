@@ -1,6 +1,5 @@
 import type { AstroIntegration } from 'astro';
-import { onRequest as enter } from '../functions/index.ts';
-import { onRequest as choose } from '../functions/language.ts';
+import { handleLanguageRequest } from '../src/lib/language-routing.ts';
 
 export default function developmentLanguageRouting(): AstroIntegration {
   return {
@@ -15,7 +14,8 @@ export default function developmentLanguageRouting(): AstroIntegration {
           const request = Object.assign(new Request(url, {
             headers: { Cookie: incoming.headers.cookie ?? '' },
           }), { cf: { country: url.searchParams.get('country') ?? undefined } });
-          const response = url.pathname === '/' ? enter({ request }) : choose({ request });
+          const response = handleLanguageRequest(request);
+          if (!response) return next();
           outgoing.statusCode = response.status;
           response.headers.forEach((value, name) => outgoing.setHeader(name, value));
           response.text().then((body) => outgoing.end(body)).catch(next);

@@ -1,74 +1,83 @@
 # DoubleTree's World
 
-A quiet, bilingual personal space for music, cosplay, computer science, and everyday discoveries. Production domain: **https://doubletree.world** (deployment must be completed separately).
+A quiet, bilingual personal space for music, cosplay, computer science, and everyday discoveries. Production domain: **https://doubletree.world** (not deployed yet).
 
-## Stack
+## Architecture
 
-- Astro and TypeScript, statically generated HTML and plain CSS.
-- Cloudflare Pages with two small Pages Functions for language routing.
-- No framework runtime in the browser, database, analytics, or third-party geolocation service.
+- Astro + TypeScript generates static HTML and plain CSS into `dist/`. No SSR adapter or browser framework runtime is needed.
+- Cloudflare Workers + Static Assets hosts the output. `worker/index.ts` is the Worker entry point, with an `ASSETS` binding configured in `wrangler.toml`.
+- `assets.run_worker_first = ["/", "/language"]` reserves only the entry redirect and language preference endpoint for Worker execution. Localized pages and other files are served directly as static assets.
+- `not_found_handling = "404-page"` serves Astro's `404.html` with status 404. There is no SPA fallback.
+- GitHub + Workers Builds will deploy approved pushes to `main` after the Cloudflare setup described in [the deployment guide](docs/DEPLOYMENT.md).
 
-## Development
+No database, accounts, tracking, third-party geolocation, or extra cloud service is required. Future APIs can be added to the Worker with corresponding `run_worker_first` patterns when needed.
 
-Install Node.js 22.23.4+ (Node 24 LTS recommended) and pnpm. Then:
+## Local development
+
+Use Node.js 24.22.1 (pinned in `.node-version`) and pnpm 11.25.0 (pinned in `package.json`).
 
 ```sh
-pnpm install
+pnpm install --frozen-lockfile
 pnpm dev
 ```
 
-Open `http://127.0.0.1:4321`. Explicit pages are `/en/` and `/zh/`.
+Open `http://localhost:4321`. Keep the development process running while browsing. Stop it with Ctrl+C.
 
 ```sh
 pnpm check
 pnpm test
+pnpm test:runtime
 pnpm build
 pnpm preview
 ```
 
-`preview` runs the built site and Pages Functions in Wrangler's local runtime. It does not deploy. `astro preview` alone does not execute Pages Functions.
+- `check` generates current Workers runtime/binding types with Wrangler, checks Astro, and separately checks the Worker against the generated types. `worker-configuration.d.ts` is generated and ignored; rerun `pnpm types` after changing Wrangler configuration.
+- `test` exercises the actual Worker entry point and shared language routing with country fixtures.
+- `test:runtime` builds the site, starts a temporary local Wrangler server, checks real Worker and Static Assets responses, and stops its own server. It does not deploy.
+- `build` only generates static files. `preview` runs the current build and Worker with `wrangler dev --local`, normally at `http://localhost:8787`. Rebuild after changing site content.
+- `pnpm exec wrangler deploy --dry-run` checks the upload bundle without publishing. `pnpm deploy` / `pnpm exec wrangler deploy` performs a real deployment and requires explicit owner approval.
 
 ## Language behavior
 
-1. `/` reads the `dt_language` preference cookie first.
-2. Without a valid preference, Cloudflare's trusted `request.cf.country === 'CN'` selects `/zh/`. Every other or missing country selects `/en/`.
-3. `/language?lang=zh` or `en` records an explicit preference for one year and redirects to a fixed language URL. Cookies use `HttpOnly`, `SameSite=Lax`, and `Secure` over HTTPS.
-4. Explicit language URLs always remain accessible regardless of country or cookie. Merely visiting an explicit URL does not change a saved preference.
+1. `/` respects a valid `dt_language` cookie first.
+2. Without a preference, trusted `request.cf.country === 'CN'` selects `/zh/`; all other, unknown, or missing country values select `/en/`.
+3. `/language?lang=zh` or `en` sets the preference for one year and redirects to the selected page. Cookies use `Path=/`, `HttpOnly`, `SameSite=Lax`, and `Secure` over HTTPS.
+4. `/zh/` and `/en/` always remain directly accessible regardless of geography or cookies. Direct page visits do not overwrite preferences.
 
-Both Function responses are uncacheable. `_routes.json` invokes Functions only for `/` and `/language`; language pages are deterministic static assets. No browser-language override or request-header-based geolocation is used. Automatic detection does not set a preference cookie. A browser that blocks cookies can still navigate explicit language URLs, but cannot retain a manual preference at `/`.
+Redirects use `302` and `Cache-Control: private, no-store, max-age=0`, with `Vary: Cookie`. Geographic redirects and saved preferences are never shared through a public cache. Explicit language pages are deterministic static HTML, with canonical URLs, alternate language links, and correct `lang` attributes. `public/_headers` is supported by Workers Static Assets; it adds security headers to asset responses. Worker responses set their own cache headers.
 
-### Local verification
+No browser-language override or client-supplied country header is trusted. Automatic detection does not set a cookie. Browsers that block cookies can still open explicit language URLs but cannot retain a root-path preference.
 
-An Astro development-server integration reuses the production handlers and allows **development-only** country simulation:
+### Local country simulation
 
-| Test | URL / action | Expected |
+Astro's development-only integration reuses the production language handler:
+
+| Scenario | Action with no preference cookie | Expected |
 | --- | --- | --- |
-| China, fresh browser | `/?country=CN` | `/zh/` |
-| Other country | `/?country=US` | `/en/` |
-| Missing country | `/` | `/en/` |
-| Manual override | Select EN, then visit `/?country=CN` | `/en/` |
-| Persistence | Refresh, close/reopen tab, return to `/` | Selected language |
-| Direct link | Visit `/zh/` with English preference | Chinese page, no redirect loop |
-| Unknown page | `/missing-page/` | 404 page |
+| Mainland China | `http://localhost:4321/?country=CN` | `/zh/` |
+| Other country | `http://localhost:4321/?country=US` | `/en/` |
+| Missing / unknown country | `/` or `/?country=XX` | `/en/` |
+| Manual override | Choose EN, revisit `/?country=CN` | `/en/` |
+| Persistence | Refresh or revisit `/` | Saved language |
+| Explicit URL | Open `/zh/` with an EN cookie | Chinese page, no loop |
 
-Clear `dt_language` between first-visit cases or use a fresh browser profile. Simulation query parameters are ignored in production. Automated tests invoke the actual Function handlers with trusted context fixtures; they do not prove Cloudflare's live geolocation. After deployment, verify a fresh root visit from real CN and non-CN networks, preference persistence, and HTTPS.
+Clear `dt_language` or use a fresh browser profile between first-visit cases. The simulation is **only available in Astro development**, never in the production Worker or Wrangler preview. Wrangler may provide simulated/cached `cf` metadata; missing-country fallback is also covered by deterministic Worker tests. Local tests do not prove live IP geolocation, DNS, TLS, or Workers Builds connectivity.
 
 ## Structure
 
 ```text
-functions/          Cloudflare root and preference endpoints
-src/i18n/           Complete English and Simplified Chinese content
-src/layouts/        HTML document and metadata
-src/pages/          Localized homepages and 404
-src/styles/         Responsive editorial styling
-scripts/            Development-only country simulation
-public/             Favicon, routing, headers, robots, sitemap
-tests/              Language routing and persistence tests
-docs/DEPLOYMENT.md  First deployment and production verification
+worker/index.ts          Worker entry point and ASSETS fallback
+src/lib/language*.ts     Cookie selection, redirects, shared routing
+src/i18n/                Complete English and Simplified Chinese content
+src/layouts/             HTML document and metadata
+src/pages/               Localized homepages, entry fallback, and 404
+src/styles/              Responsive editorial styling
+scripts/dev-language.ts  Development-only country simulation
+public/                  Favicon, asset headers, robots, sitemap
+tests/                   Worker unit tests and local runtime integration tests
+wrangler.toml            Worker entry, Static Assets binding, selective routing
+tsconfig.worker.json     Worker runtime type-check boundary
+docs/DEPLOYMENT.md       Workers Builds setup and production acceptance
 ```
 
-Future themes are visibly marked as coming soon, without broken links. No subdomains are provisioned. Edit `src/i18n/content.ts` to update both translations. Keep documentation, comments, identifiers, and commit messages in English.
-
-## Deployment
-
-See [the deployment guide](docs/DEPLOYMENT.md). External repository creation, pushes, Cloudflare project creation, DNS changes, and domain binding require the owner's confirmation. Never commit credentials or local environment files.
+Future themes remain marked as coming soon without broken links. Edit `src/i18n/content.ts` to update both translations. Keep documentation, comments, identifiers, and commit messages in English. Never commit credentials or local environment files. Commit, push, cloud resource creation, domain changes, and real deployment require the owner's approval for this migration.

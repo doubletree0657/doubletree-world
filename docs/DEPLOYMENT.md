@@ -1,74 +1,107 @@
-# First deployment
+# Deploy with Cloudflare Workers Builds
 
-This project targets **Cloudflare Pages Git integration**, not a static-only upload and not a Workers Builds project. Pages discovers the root `functions/` directory separately from Astro's `dist/` output.
+This project uses **Workers + Static Assets** and Astro SSG. It has no SSR adapter, platform-specific Functions directory, or SPA fallback. `wrangler.toml` is the deployment source of truth. The Worker handles `/` and `/language`; localized HTML and other assets are served directly from `dist/`.
 
-## 1. GitHub
+## 1. Review and publish the migration source
 
-After reviewing the local site and explicitly approving external actions:
-
-1. Open your existing `doubletree-world` GitHub repository, or create an empty repository with that name. Choose visibility deliberately; do not initialize it with another README or license.
-2. Copy its remote URL. Do not put credentials in the URL.
-3. Run these commands locally, replacing `YOUR_USERNAME`:
+The repository is already associated with `https://github.com/doubletree0657/doubletree-world.git`. After the owner approves committing and pushing this migration:
 
 ```sh
-git remote add origin https://github.com/YOUR_USERNAME/doubletree-world.git
-git push -u origin main
+pnpm install --frozen-lockfile
+pnpm check
+pnpm test
+pnpm test:runtime
+pnpm build
+pnpm exec wrangler deploy --dry-run
 ```
 
-If `origin` already exists, inspect it with `git remote -v` before changing anything. If the remote contains commits, reconcile history instead of force-pushing. Authenticate through GitHub's browser or credential manager; never paste passwords or tokens into chat.
+Review `git diff`, commit the migration, and push `main`. Do not connect an automatic production build until the migration is present in the intended GitHub commit. The previous repository version uses a different hosting architecture.
 
-## 2. Cloudflare Pages
+## 2. Connect GitHub to Workers Builds
 
-After approving project creation:
+After owner approval for creating a Worker and deploying:
 
-1. In Cloudflare, open **Workers & Pages**, create an application, choose **Pages**, and import an existing Git repository. Dashboard labels may vary; select the Pages Git workflow.
-2. Authorize GitHub access only to the intended repository.
-3. Select `doubletree-world` and production branch `main`.
-4. Use the repository root as root directory, build command `pnpm build`, and output directory `dist`.
-5. Set build environment variable `NODE_VERSION` to `24`. The repository pins pnpm through `packageManager`; retain `pnpm-lock.yaml` and use the current Pages build image.
-6. Deploy. Confirm both the Astro build and Pages Functions compilation succeed in the deployment logs. No runtime secrets, bindings, or paid services are required.
-7. Open the assigned `*.pages.dev` URL. Check the homepage, both translations, language selection, and 404 before binding the production domain.
+1. Sign in to the Cloudflare account that owns the active `doubletree.world` zone.
+2. Open **Workers & Pages > Create application > GitHub**. Authorize access to the `doubletree-world` repository and select `doubletree0657/doubletree-world`.
+3. Configure the Worker with the values below. Keep its name equal to `name` in `wrangler.toml`; changing the name can target a different Worker.
+4. Review the settings, then select **Save and Deploy**. This action creates/deploys a real Worker; it is not a local preview.
+5. In the Worker, review **Settings > Build** and the build logs. Confirm the production branch is `main`, the intended commit was built, and both build and deploy steps succeeded.
+6. Open the assigned `https://doubletree-world.<your-subdomain>.workers.dev` URL and run acceptance checks before adding the production domain. If prompted to set up a Workers subdomain, choose it in your own account.
 
-Do not upload only `dist/` through dashboard drag-and-drop: this omits the Functions required for geolocation and preferences. Do not add a redirect rule that bypasses the root Function. Do not configure a cache rule that caches `/` or `/language` despite `no-store`. Choose fail-closed behavior for Functions when offered, so exhausted Function quota does not silently fall through to static content. Check the account's plan and included limits before deployment; do not enable a paid plan automatically.
+For a Worker that was already created manually, use its **Settings > Build** Git repository connection instead of creating a duplicate Worker. Dashboard labels can change; choose the Workers GitHub workflow.
 
-## 3. Production domain
+| Setting | Value |
+| --- | --- |
+| Worker name | `doubletree-world` |
+| Repository | `doubletree0657/doubletree-world` |
+| Production branch | `main` |
+| Root directory | Repository root (`/`), not `dist` |
+| Build command | `pnpm build` |
+| Deploy command | `pnpm exec wrangler deploy` |
+| Node.js | `24.22.1`, also pinned in `.node-version` |
+| pnpm | `11.25.0`, pinned by `packageManager` in `package.json` |
+| Static output | `dist`, configured as `assets.directory` in Wrangler |
 
-After explicitly approving domain binding and any DNS change:
+Workers Builds installs dependencies before the build command. Keep `pnpm-lock.yaml` and `pnpm-workspace.yaml` in Git. There is no separate output-directory field needed for hosting; Wrangler uploads the Worker script and assets together. Do not set the deploy command to an assets-only upload.
 
-1. Open the Pages project's **Custom domains** and choose **Set up a custom domain**.
-2. Enter `doubletree.world`. Since the zone is managed by Cloudflare, follow its proposed DNS association after reviewing existing records and potential conflicts.
-3. Do not manually create an unrelated CNAME before associating the domain with the Pages project. Preserve unrelated mail and verification records.
-4. Wait for domain activation and TLS certificate issuance. Verify the domain shows Active and a real browser opens `https://doubletree.world` without certificate warnings.
+### Build environment and credentials
 
-No subdomains are needed in this milestone. Git pushes to `main` will trigger production builds; other branches may produce preview deployments according to Pages settings. A prior successful deployment can be rolled back in the Pages dashboard.
+Under **Settings > Build > Build Variables and Secrets**, set `NODE_VERSION=24.22.1` to make the runtime choice explicit. The checked-in `.node-version` provides the same version. `PNPM_VERSION=11.25.0` is optional because the checked-in `packageManager` already pins it. `ASTRO_TELEMETRY_DISABLED=1` is optional for build-tool telemetry.
 
-## Production acceptance
+No application runtime variables or secrets are required. The `ASSETS` binding is declared by Wrangler and needs no manual resource creation. Workers Builds manages deployment authentication through its account-side configuration; use the dashboard's managed deployment token flow if prompted. Never commit or paste a deployment token into source or chat. Local CLI deployment, if later authorized, uses `pnpm exec wrangler login` and `pnpm deploy`.
 
-- [ ] GitHub shows the intended source and no credentials.
-- [ ] Pages deployment reports success, including Functions compilation.
-- [ ] HTTPS is valid at `https://doubletree.world`.
-- [ ] Fresh CN traffic at `/` redirects to `/zh/`; fresh non-CN traffic redirects to `/en/`.
-- [ ] Missing-country behavior has passed handler tests; real geolocation has been checked separately.
-- [ ] Selecting EN in a CN session persists on refresh and revisiting `/`, and vice versa.
-- [ ] `/en/` and `/zh/` remain accessible directly without loops.
-- [ ] Root and preference redirects return `Cache-Control: private, no-store, max-age=0`.
-- [ ] An unknown URL returns HTTP 404 with the custom page.
-- [ ] A small subsequent Git push triggers an automatic deployment.
+Production pushes to `main` trigger automatic build/deploy after this connection is active. Review non-production branch build settings separately; disable them for the first milestone if previews are not needed. No paid plan, database, or storage service is required by this code; review account limits before choosing any plan.
 
-Example response checks (run after deployment):
+## 3. Bind doubletree.world
+
+Only after separately approving the production hostname and any resulting DNS change:
+
+1. Open **Workers & Pages > doubletree-world > Settings > Domains & Routes > Add > Custom Domain**.
+2. Enter `doubletree.world`, review the proposed changes, then select **Add Custom Domain**.
+3. Cloudflare creates the associated DNS record and provisions the certificate. Check existing apex records first; an existing CNAME on the same hostname can block creation. Resolve any conflict deliberately and preserve unrelated mail and verification records.
+4. Wait for activation and verify `https://doubletree.world` opens without TLS warnings.
+
+Use a **Custom Domain**, not a wildcard route to an unrelated origin. No subdomains are required. This repository intentionally does not declare production `routes` in Wrangler, so a CLI deploy will not automatically bind or change the formal hostname. Keep the dashboard association under review after deployments. If domain configuration is later moved into Git, add it only after explicit approval.
+
+## 4. Verify the deployed site
+
+Run these checks first against the assigned `workers.dev` origin, then the production hostname. Use a fresh browser profile when testing automatic selection.
+
+| Request / action | Expected |
+| --- | --- |
+| Fresh `/`, trusted country `CN` | `302` to `/zh/` |
+| Fresh `/`, other / unknown / missing country | `302` to `/en/` |
+| `/` with `Cookie: dt_language=en` | `302` to `/en/` regardless of country |
+| `/zh/` or `/en/` | `200`, correct content and document language, no preference redirect |
+| `/language?lang=zh` or `en` | `302`, preference cookie, fixed localized destination |
+| Invalid language | `400`, no arbitrary redirect |
+| Refresh / reopen tab / revisit `/` | Manual preference is retained |
+| `/missing-page/` | `404`, custom bilingual error page |
+| `/favicon.svg`, `/robots.txt`, `/sitemap.xml` | `200` static assets |
+
+The root and preference redirects must include `Cache-Control: private, no-store, max-age=0`. Do not add account cache rules that override this behavior. Explicit pages may be cached because their contents do not vary by visitor. Verify canonical/hreflang links remain on the production origin, even while testing the `workers.dev` hostname.
 
 ```sh
 curl -I https://doubletree.world/
+curl -I https://doubletree.world/zh/
+curl -I https://doubletree.world/en/
 curl -I 'https://doubletree.world/language?lang=en'
 curl -I -H 'Cookie: dt_language=en' https://doubletree.world/
 curl -I https://doubletree.world/missing-page/
 ```
 
-Local builds and mocked country tests are not evidence of successful live deployment.
+Do not use a forged `CF-IPCountry` header or a `?country=CN` query to validate production geography: the Worker deliberately ignores them. Unit tests cover trusted `request.cf` fixtures, including missing and unknown country. Check real CN/non-CN behavior from appropriate networks after deployment, along with valid HTTPS and a subsequent approved push triggering Workers Builds.
+
+## Local validation and release boundary
+
+`pnpm test:runtime` builds the real assets and starts an isolated local Wrangler process. It verifies Worker interception at `/` and `/language`, explicit language pages, preference round trips, asset headers, clean URLs, and real HTTP 404 behavior. It stops its own server afterward. `pnpm preview` is the persistent manual preview; keep it running while inspecting the site.
+
+`pnpm exec wrangler deploy --dry-run` validates packaging without uploading or publishing. A successful local build, test, or dry run is not evidence of a live deployment. GitHub automatic builds, domain routing, live geolocation, and TLS remain unverified until the owner completes the external setup. If a future API is added, extend `assets.run_worker_first` for its route and test it; unmatched static requests should continue to avoid Worker execution.
 
 ## Official references
 
-- [Astro on Pages](https://developers.cloudflare.com/pages/framework-guides/deploy-an-astro-site/)
-- [Pages Functions routing](https://developers.cloudflare.com/pages/functions/routing/)
-- [Pages Git integration](https://developers.cloudflare.com/pages/configuration/git-integration/)
-- [Pages custom domains](https://developers.cloudflare.com/pages/configuration/custom-domains/)
+- [Workers Builds setup](https://developers.cloudflare.com/workers/ci-cd/builds/)
+- [Build configuration](https://developers.cloudflare.com/workers/ci-cd/builds/configuration/)
+- [Build image and version settings](https://developers.cloudflare.com/workers/ci-cd/builds/build-image/)
+- [Static Assets Worker routing](https://developers.cloudflare.com/workers/static-assets/routing/worker-script/)
+- [Custom Domains](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/)
