@@ -2,6 +2,9 @@ export const content = {
   en: {
     lang: 'en', description: 'The personal world of DoubleTree. Music, cosplay, computer science, and everyday discoveries.',
     skip: 'Skip to content', home: 'A personal collection', language: 'Choose language',
+    monologueLabel: 'A personal monologue',
+    monologueFirst: 'If life could end at 22,',
+    monologueBefore: 'then ', monologueBand: 'yorushika', monologueAfter: ' saved me.',
     eyebrow: 'A SMALL CORNER OF THE INTERNET', hello: "Hi, I'm", name: 'DoubleTree.',
     intro: 'A software engineer who loves music, cosplay, and computer science.',
     note: 'This is a little place where I collect the things I love and the things I create.',
@@ -19,6 +22,9 @@ export const content = {
   zh: {
     lang: 'zh-CN', description: 'DoubleTree 的个人世界。记录音乐、Cosplay、计算机科学，以及生活中的细小发现。',
     skip: '跳转到正文', home: '一份私人收藏', language: '选择语言',
+    monologueLabel: '内心独白',
+    monologueFirst: '人生如果能在22岁死去',
+    monologueBefore: '那么是', monologueBand: '夜鹿', monologueAfter: '拯救了我',
     eyebrow: '互联网里的一小片天地', hello: '你好，我是', name: 'DoubleTree。',
     intro: '一名热爱音乐、Cosplay 和计算机科学的软件工程师。',
     note: '这里是我的个人空间，用来记录我所热爱的事物，以及我亲手创造的作品。',
