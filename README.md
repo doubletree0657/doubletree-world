@@ -1,6 +1,6 @@
 # DoubleTree's World
 
-A quiet, bilingual personal space for music, cosplay, computer science, and everyday discoveries. Production domain: **https://doubletree.world** (not deployed yet).
+A bilingual personal space, currently presented through a live-image theme for ヨルシカ「だから僕は音楽を辞めた」. Production domain: **https://doubletree.world** (not deployed yet).
 
 ## Architecture
 
@@ -80,4 +80,4 @@ tsconfig.worker.json     Worker runtime type-check boundary
 docs/DEPLOYMENT.md       Workers Builds setup and production acceptance
 ```
 
-Future themes remain marked as coming soon without broken links. Edit `src/i18n/content.ts` to update both translations. Keep documentation, comments, identifiers, and commit messages in English. Never commit credentials or local environment files. Commit, push, cloud resource creation, domain changes, and real deployment require the owner's approval for this migration.
+The initial song theme is implemented locally; theme switching will be added when another theme is available. Edit `src/i18n/content.ts` to update both languages and `src/i18n/yorushika.ts` for shared Japanese song titles and localized artist names. Owner-supplied originals and provenance live in `assets/yorushika/`; Astro creates responsive WebP derivatives without changing the originals. A small client script reveals selected passages on scroll and respects reduced motion. See `docs/YORUSHIKA-THEME-RESEARCH.md` for the creative brief. Keep documentation, comments, identifiers, and commit messages in English. Never commit credentials or local environment files. Commit, push, cloud resource creation, domain changes, and real deployment require the owner's approval for this migration.

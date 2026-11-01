@@ -1,0 +1,88 @@
+{
+  "artist": {
+    "ja": "ヨルシカ",
+    "en": "yorushika"
+  },
+  "albumTitle": "だから僕は音楽を辞めた",
+  "songTitle": "だから僕は音楽を辞めた",
+  "assets": [
+    {
+      "id": "01-vocal-closeup-amber",
+      "file": "albums/dakara-boku-wa-ongaku-wo-yameta/songs/dakara-boku-wa-ongaku-wo-yameta/live/user-upload-2026-11-01/originals/01-vocal-closeup-amber.png",
+      "originalFilename": "codex-clipboard-0e12387a-159a-44a1-9067-5b5be664913e.png",
+      "width": 3456,
+      "height": 2234,
+      "sha256": "e3f5b30f5edef41b7cf9afed8c1e356ec94f381dc2f33233ab4feb92c40a248d",
+      "kind": "live-screenshot",
+      "providedBy": "owner",
+      "sourceUrl": null,
+      "performanceTitle": null,
+      "creator": null
+    },
+    {
+      "id": "02-window-desk-projection",
+      "file": "albums/dakara-boku-wa-ongaku-wo-yameta/songs/dakara-boku-wa-ongaku-wo-yameta/live/user-upload-2026-11-01/originals/02-window-desk-projection.png",
+      "originalFilename": "codex-clipboard-f312a43f-95b3-4a11-8919-e2ab20f61f08.png",
+      "width": 3456,
+      "height": 2234,
+      "sha256": "859131c1abe75888ddff504793e6673c5636e47795fa39ae700456652a6fbc17",
+      "kind": "live-screenshot",
+      "providedBy": "owner",
+      "sourceUrl": null,
+      "performanceTitle": null,
+      "creator": null
+    },
+    {
+      "id": "03-handwriting-black",
+      "file": "albums/dakara-boku-wa-ongaku-wo-yameta/songs/dakara-boku-wa-ongaku-wo-yameta/live/user-upload-2026-11-01/originals/03-handwriting-black.png",
+      "originalFilename": "codex-clipboard-dc54561b-140d-46d0-8862-ee2b789c135b.png",
+      "width": 3456,
+      "height": 2234,
+      "sha256": "c4c135abc52faf90d515e884649b6ca4b93a4966e77f3731945a5f444bcdd55d",
+      "kind": "live-screenshot",
+      "providedBy": "owner",
+      "sourceUrl": null,
+      "performanceTitle": null,
+      "creator": null
+    },
+    {
+      "id": "04-vocal-closeup-blue",
+      "file": "albums/dakara-boku-wa-ongaku-wo-yameta/songs/dakara-boku-wa-ongaku-wo-yameta/live/user-upload-2026-11-01/originals/04-vocal-closeup-blue.png",
+      "originalFilename": "codex-clipboard-f5761338-3eea-4b60-8133-d61818b2c7b6.png",
+      "width": 3456,
+      "height": 2234,
+      "sha256": "8c31c8041ac23df2b94681b8de84dbcf181b7e92ebf6e4d523657d3cd54683e0",
+      "kind": "live-screenshot",
+      "providedBy": "owner",
+      "sourceUrl": null,
+      "performanceTitle": null,
+      "creator": null
+    },
+    {
+      "id": "05-stage-wide-blue",
+      "file": "albums/dakara-boku-wa-ongaku-wo-yameta/songs/dakara-boku-wa-ongaku-wo-yameta/live/user-upload-2026-11-01/originals/05-stage-wide-blue.png",
+      "originalFilename": "codex-clipboard-547f13fa-51e7-4932-bcc6-d06d6c4bb8f0.png",
+      "width": 3456,
+      "height": 2234,
+      "sha256": "ec19a3023c93f746fab00f42455e1fe474ac3daaf99a7092396a0d329a6ca3e5",
+      "kind": "live-screenshot",
+      "providedBy": "owner",
+      "sourceUrl": null,
+      "performanceTitle": null,
+      "creator": null
+    },
+    {
+      "id": "06-stage-side-amber",
+      "file": "albums/dakara-boku-wa-ongaku-wo-yameta/songs/dakara-boku-wa-ongaku-wo-yameta/live/user-upload-2026-11-01/originals/06-stage-side-amber.png",
+      "originalFilename": "codex-clipboard-c334a137-4cd4-4629-8c79-ffe7e26d2dad.png",
+      "width": 3456,
+      "height": 2234,
+      "sha256": "bc32e55750be4c417ee8a36127eb62b3b2295039a1e993b14d55522097017b78",
+      "kind": "live-screenshot",
+      "providedBy": "owner",
+      "sourceUrl": null,
+      "performanceTitle": null,
+      "creator": null
+    }
+  ]
+}
