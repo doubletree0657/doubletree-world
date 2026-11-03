@@ -59,10 +59,10 @@ const song = YORUSHIKA.songs.dakara;
       <p class="failure reveal">{t.failure}</p>
       <h2 id="inferiority-title" class="inferiority-hate reveal"><span>{t.hateFirst}</span><span>{t.hateSecond}</span></h2>
       <div class="inferiority-body">
-        <div class="writing-frame"><Image src={writing} alt={t.imageWriting} widths={[800, 1400]} sizes="(max-width: 700px) 100vw, 60vw" format="webp" /></div>
-        <p class="inferiority-self reveal">{t.selfFirst}<br />{t.selfSecond}</p>
+        <div class="writing-frame"><img src={writing.src} alt={t.imageWriting} width={writing.width} height={writing.height} loading="lazy" decoding="async" /></div>
+        <p class="question reveal">{t.questionFirst}<br /><span>{t.questionSecond}</span></p>
       </div>
-      <p class="question reveal">{t.questionFirst}<br /><span>{t.questionSecond}</span></p>
+      <p class="inferiority-self reveal">{t.selfFirst}<br />{t.selfSecond}</p>
     </section>
 
     <section class="rejection chapter" aria-labelledby="rejection-title">
@@ -73,16 +73,16 @@ const song = YORUSHIKA.songs.dakara;
     </section>
 
     <section class="indifference" aria-labelledby="ending-title">
+      <div class="chapter-label"><span>05</span><span>{t.artist} / {song.title}</span><span>↘</span></div>
       <p class="word-stream">{t.indifferent.map(word => <span>{word}<b aria-hidden="true"> / </b></span>)}</p>
       <h2 id="ending-title" class="reveal">{t.ending}</h2>
-      <div class="end-marker"><span>05</span><span>●</span><span>END OF SIDE A</span></div>
     </section>
 
     <section class="afterimage" id="about" aria-labelledby="about-title">
       <div class="belief reveal"><h2>{t.beliefFirst}</h2><p>{t.beliefSecond}</p></div>
       <figure class="window-frame"><Image src={windowScene} alt={t.imageWindow} widths={[800, 1440, 2000]} sizes="100vw" format="webp" /></figure>
       <div class="about-content"><p class="eyebrow">{t.personal}</p><h2 id="about-title">DoubleTree<span>．</span></h2><p class="about-intro">{t.intro}</p></div>
-      <footer><a href="#opening">{t.back} ↑</a><span>{t.note}</span><a href={song.officialVideoPageUrl} target="_blank" rel="noreferrer">{t.artist} ↗</a></footer>
+      <footer><a href="#opening">{t.back} ↑</a><a href={song.officialVideoPageUrl} target="_blank" rel="noreferrer">{t.artist} ↗</a></footer>
     </section>
   </main>
   <script>

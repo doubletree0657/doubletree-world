@@ -71,7 +71,7 @@ h1 > span { display: block; }
 .hate-copy span, .hate-copy strong { display: block; font-weight: 400; }
 .self-copy { align-self: center; display: flex; gap: 20px; font-family: var(--serif); font-size: clamp(16px, min(1.8vw, 3svh), 28px); line-height: 2; color: #beb8ac; }
 .small-cross { font-family: Arial; color: #a8886e; }
-.inferiority { background: #000; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto 1fr 2fr 1fr; gap: 2svh 5%; }
+.inferiority { background: #000; display: grid; grid-template-columns: .85fr 1.15fr; grid-template-rows: auto 1fr 2fr 1fr; gap: 2svh 5%; }
 .inferiority .chapter-label { grid-column: 1 / -1; }
 .failure { align-self: end; font-family: var(--serif); font-size: clamp(15px, min(1.8vw, 2.8svh), 27px); color: #92928c; }
 .inferiority-hate { grid-column: 1; align-self: center; font-family: var(--serif); font-weight: 400; font-size: clamp(26px, min(3.8vw, 6svh), 64px); line-height: 1.8; letter-spacing: .04em; }
@@ -79,8 +79,8 @@ h1 > span { display: block; }
 .inferiority-hate span + span { margin-left: .5em; }
 .inferiority-body { grid-column: 2; grid-row: 2 / 5; display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: 2svh; }
 .writing-frame { position: relative; overflow: hidden; }
-.writing-frame img { height: 100%; object-fit: cover; object-position: center 52%; clip-path: inset(0 0 25%); }
-.inferiority-self { font-family: var(--serif); font-size: clamp(16px, min(1.9vw, 3svh), 29px); line-height: 2; text-align: right; color: #b6b5ac; }
+.writing-frame img { position: absolute; width: 420%; height: auto; clip-path: inset(0 0 18%); left: 44%; top: 40%; transform: translate(-50%, -50%); object-fit: contain; }
+.inferiority-self { font-family: var(--serif); font-size: clamp(16px, min(1.9vw, 3svh), 29px); line-height: 2; text-align: left; color: #b6b5ac; align-self: start; }
 .question { align-self: start; border-left: 1px solid #574b40; padding-left: 24px; font-family: var(--serif); font-size: clamp(15px, min(1.7vw, 2.8svh), 26px); line-height: 1.9; color: #a59485; }
 .rejection { isolation: isolate; background: #09131d; display: grid; grid-template-rows: auto 1fr 1fr; gap: 4svh; }
 .rejection-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .16; z-index: -2; filter: grayscale(.45); }
@@ -89,24 +89,25 @@ h1 > span { display: block; }
 .rejected-words { font-size: clamp(26px, min(4vw, 7svh), 65px); letter-spacing: .1em; line-height: 1.6; }
 .reason { font-size: clamp(16px, min(1.8vw, 3svh), 27px); margin-top: 4svh; color: #a4b2bb; letter-spacing: .06em; }
 .disgust-title { align-self: center; font-family: var(--serif); font-weight: 400; font-size: clamp(36px, min(7.3vw, 12svh), 116px); line-height: 1.5; text-align: right; }
-.indifference { background: #080c10; display: flex; flex-direction: column; justify-content: space-around; }
+.indifference { background: #080c10; display: grid; grid-template-rows: auto 1fr 2fr; gap: 4svh; }
+.indifference .word-stream, .indifference h2 { align-self: center; }
 .word-stream { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 15px; font-family: var(--serif); font-size: clamp(18px, min(2.6vw, 4svh), 40px); color: #7e898f; }
 .word-stream b { font-weight: 400; color: #3c454a; margin-left: 15px; }
 .word-stream span:last-child b { display: none; }
 .indifference h2 { font-family: var(--serif); font-size: clamp(40px, min(8vw, 13svh), 125px); font-weight: 400; line-height: 1.35; }
-.end-marker { display: flex; justify-content: space-between; border-top: 1px solid var(--line); padding-top: 20px; font-size: 9px; letter-spacing: 2px; color: #859097; }
-.afterimage { background: #000; display: grid; grid-template-columns: 1fr 1.2fr; grid-template-rows: 1fr 1fr auto; gap: 3svh 5%; }
+.afterimage { background: #000; display: grid; grid-template-columns: 1fr 1.5fr; grid-template-rows: 1fr 1fr auto; gap: 3svh 5%; }
 .belief { align-self: end; font-family: var(--serif); }
 .belief h2 { font-weight: 400; font-size: clamp(24px, min(3vw, 5svh), 50px); line-height: 1.7; }
 .belief p { font-size: clamp(15px, min(1.6vw, 2.6svh), 25px); color: #99988c; margin-top: 3svh; line-height: 2; }
-.window-frame { grid-column: 2; grid-row: 1 / 3; }
+.window-frame { grid-column: 2; grid-row: 1 / 3; overflow: hidden; }
+.window-frame img { transform: translateY(6svh) scale(1.45); }
+.inferiority-body .question { justify-self: end; align-self: end; }
 .about-content { align-self: center; }
 .eyebrow { font-size: 10px; letter-spacing: 3px; color: #9a9c93; margin-bottom: 2svh; }
 .about-content h2 { font-family: Georgia, serif; font-size: clamp(40px, min(5vw, 8svh), 80px); font-weight: 400; letter-spacing: -2px; }
 .about-content h2 span { color: #b8ac85; }
 .about-intro { font-family: var(--serif); font-size: clamp(13px, 2svh, 16px); line-height: 2; color: #a9aaa2; margin-top: 2svh; }
 footer { grid-column: 1 / -1; border-top: 1px solid var(--line); padding-top: 18px; display: flex; justify-content: space-between; gap: 20px; font-size: 9px; color: #949a96; }
-footer > span { font-size: 8px; color: #666e69; }
 .will-reveal { opacity: 0; transform: translateY(12px); transition: opacity .7s ease, transform .7s ease; }
 .will-reveal.is-visible { opacity: 1; transform: none; }
 .simple-page { max-width: 650px; margin: 15vh auto; padding: 30px; line-height: 1.8; }
@@ -146,12 +147,14 @@ html[lang=en] .inferiority-hate { font-size: clamp(28px, min(4vw, 6svh), 64px); 
   .vocal-frame { grid-row: 2; }
   .vocal-frame figcaption { font-size: 7px; }
   .self-copy { font-size: 16px; justify-self: end; gap: 15px; }
-  .inferiority { grid-template-columns: 1fr; grid-template-rows: auto auto auto minmax(0, 1fr) auto; gap: 2svh; }
+  .inferiority { grid-template-columns: 1fr; grid-template-rows: auto auto auto auto minmax(0, 1fr); gap: 2svh; }
   .failure { font-size: 15px; padding-top: 1svh; }
   .inferiority-hate { grid-column: 1; font-size: clamp(25px, 4svh, 35px); line-height: 1.6; }
-  .inferiority-body { grid-column: 1; grid-row: 4; grid-template-columns: 1fr 1.1fr; grid-template-rows: 1fr; align-items: center; gap: 10px; }
+  .inferiority-body { grid-column: 1; grid-row: 5; grid-template-columns: 1fr 1.1fr; grid-template-rows: 1fr; align-items: center; gap: 10px; }
   .writing-frame { height: 100%; }
-  .inferiority-self { font-size: 14px; text-align: left; }
+  .inferiority-self { grid-row: 4; font-size: 15px; text-align: left; }
+  .inferiority-body .question { font-size: 14px; padding-left: 12px; }
+  .writing-frame img { width: 300%; height: auto; }
   .question { font-size: 15px; padding-left: 16px; justify-self: end; }
   .rejected-words { font-size: 8vw; }
   .reason { font-size: 15px; }
@@ -159,7 +162,6 @@ html[lang=en] .inferiority-hate { font-size: clamp(28px, min(4vw, 6svh), 64px); 
   .word-stream { justify-content: flex-start; font-size: 17px; gap: 10px; }
   .word-stream b { margin-left: 8px; }
   .indifference h2 { font-size: 10vw; }
-  .end-marker { font-size: 7px; }
   .afterimage { grid-template-columns: 1fr; grid-template-rows: auto minmax(0, 1fr) auto auto; gap: 2svh; }
   .belief h2 { font-size: clamp(22px, 3svh, 28px); }
   .belief p { font-size: 15px; margin-top: 1svh; }
@@ -169,7 +171,6 @@ html[lang=en] .inferiority-hate { font-size: clamp(28px, min(4vw, 6svh), 64px); 
   .eyebrow { font-size: 8px; margin-bottom: 1svh; }
   .about-intro { margin-top: 1svh; font-size: 13px; }
   footer { font-size: 8px; flex-wrap: wrap; gap: 10px; padding-top: 12px; }
-  footer > span { order: 3; flex-basis: 100%; font-size: 7px; }
   html[lang=en] .hate-copy { font-size: clamp(21px, 3svh, 28px); }
   html[lang=en] .inferiority-hate { font-size: clamp(27px, 4svh, 35px); }
 }
@@ -183,4 +184,22 @@ html[lang=en] .inferiority-hate { font-size: clamp(28px, min(4vw, 6svh), 64px); 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .will-reveal { opacity: 1; transform: none; transition: none; }
+}
+/* Let the handwriting bridge the composition instead of clipping at a column. */
+@media (min-width: 701px) {
+  .inferiority .writing-frame {
+    position: absolute;
+    left: 25%;
+    top: 12%;
+    width: 68%;
+    height: 68%;
+    z-index: 0;
+  }
+  .inferiority .writing-frame img { width: 300%; left: 50%; top: 40%; }
+  .inferiority > .failure,
+  .inferiority > .inferiority-hate,
+  .inferiority > .inferiority-self,
+  .inferiority .question,
+  .inferiority > .chapter-label { position: relative; z-index: 1; }
+  .inferiority-body .question { grid-row: 2; }
 }
