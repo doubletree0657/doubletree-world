@@ -54,3 +54,7 @@ The owner approved implementation. The first local prototype now replaces the ho
 ## Earlier next discussion (superseded)
 
 Agree on the first visual direction and the minimum personal content; then review the owner's live images. Build one convincing theme before expanding the switching system. No layout, theme runtime, domain configuration, or deployment changes have been made during this research.
+
+## Second arrangement, 2026-11-02
+
+The owner approved a longer connected sequence: uncertainty about the future (blue vocal still), pain and unwanted memories (amber vocal still), failure/envy/inferiority (one continuous black module), rejection (cold blue stage background), indifference, and former convictions above the window scene. The previous sage word display was removed from the active layout. New Chinese passages come from text supplied by the owner; English follows the same meaning. The opening monologue retains the owner's revised wording and the opening scroll prompt stays removed.

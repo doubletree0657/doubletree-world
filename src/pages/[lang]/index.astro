@@ -4,6 +4,7 @@ import Page from '../../layouts/Page.astro';
 import { content } from '../../i18n/content';
 import { YORUSHIKA } from '../../i18n/yorushika';
 import stage from '../../../assets/yorushika/albums/dakara-boku-wa-ongaku-wo-yameta/songs/dakara-boku-wa-ongaku-wo-yameta/live/user-upload-2026-11-01/originals/05-stage-wide-blue.png';
+import future from '../../../assets/yorushika/albums/dakara-boku-wa-ongaku-wo-yameta/songs/dakara-boku-wa-ongaku-wo-yameta/live/user-upload-2026-11-01/originals/04-vocal-closeup-blue.png';
 import vocal from '../../../assets/yorushika/albums/dakara-boku-wa-ongaku-wo-yameta/songs/dakara-boku-wa-ongaku-wo-yameta/live/user-upload-2026-11-01/originals/01-vocal-closeup-amber.png';
 import writing from '../../../assets/yorushika/albums/dakara-boku-wa-ongaku-wo-yameta/songs/dakara-boku-wa-ongaku-wo-yameta/live/user-upload-2026-11-01/originals/03-handwriting-black.png';
 import windowScene from '../../../assets/yorushika/albums/dakara-boku-wa-ongaku-wo-yameta/songs/dakara-boku-wa-ongaku-wo-yameta/live/user-upload-2026-11-01/originals/02-window-desk-projection.png';
@@ -37,37 +38,48 @@ const song = YORUSHIKA.songs.dakara;
       <span class="edge-title" lang="ja">{song.title}</span>
     </section>
 
-    <section class="resentment chapter" id="resentment" aria-labelledby="resentment-title">
+    <section class="future chapter" aria-labelledby="future-title">
       <div class="chapter-label"><span>01</span><span>{t.artist} / {song.title}</span><span>↘</span></div>
+      <div class="future-heading reveal"><h2 id="future-title">{t.futureFirst}</h2><p>{t.futureSecond}</p></div>
+      <figure class="future-frame"><Image src={future} alt={t.imageFuture} widths={[800, 1440, 2000]} sizes="100vw" format="webp" /></figure>
+      <p class="youth">{t.youth}</p>
+    </section>
+
+    <section class="resentment chapter" aria-labelledby="pain-title">
+      <div class="chapter-label"><span>02</span><span>{t.artist} / {song.title}</span><span>↘</span></div>
       <div class="resentment-composition">
         <figure class="vocal-frame"><Image src={vocal} alt={t.imageVocal} widths={[700, 1200, 1800]} sizes="(max-width: 700px) 100vw, 66vw" format="webp" /><figcaption>LIVE STILL / 01</figcaption></figure>
-        <h2 id="resentment-title" class="hate-copy reveal"><span>{t.hateFirst}</span><strong>{t.hateSecond}</strong></h2>
-        <div class="self-copy reveal"><span class="small-cross">＋</span><p>{t.selfFirst}<br />{t.selfSecond}</p></div>
+        <h2 id="pain-title" class="hate-copy reveal"><span>{t.painFirst}</span><strong>{t.painSecond}</strong></h2>
+        <div class="self-copy reveal"><span class="small-cross">＋</span><p>{t.memoryFirst}<br />{t.memorySecond}</p></div>
       </div>
     </section>
 
-    <section class="inferiority" aria-label={t.imageWriting}>
-      <div class="writing-frame"><Image src={writing} alt={t.imageWriting} widths={[800, 1400]} sizes="(max-width: 700px) 100vw, 75vw" format="webp" /></div>
-      <span class="margin-number">02 / INNER NOISE</span>
-      <p class="inferiority-caption">{t.selfSecond}</p>
+    <section class="inferiority chapter" id="resentment" aria-labelledby="inferiority-title">
+      <div class="chapter-label"><span>03</span><span>{t.artist} / {song.title}</span><span>↘</span></div>
+      <p class="failure reveal">{t.failure}</p>
+      <h2 id="inferiority-title" class="inferiority-hate reveal"><span>{t.hateFirst}</span><span>{t.hateSecond}</span></h2>
+      <div class="inferiority-body">
+        <div class="writing-frame"><Image src={writing} alt={t.imageWriting} widths={[800, 1400]} sizes="(max-width: 700px) 100vw, 60vw" format="webp" /></div>
+        <p class="inferiority-self reveal">{t.selfFirst}<br />{t.selfSecond}</p>
+      </div>
+      <p class="question reveal">{t.questionFirst}<br /><span>{t.questionSecond}</span></p>
     </section>
 
     <section class="rejection chapter" aria-labelledby="rejection-title">
-      <div class="chapter-label"><span>03</span><span>{t.artist} / {song.title}</span><span>↘</span></div>
-      <div class="scattered-words" aria-label={t.words.join('、')}>
-        {t.words.map((word, i) => <span class={`word word-${i}`} aria-hidden="true">{word}<small>0{i + 1}</small></span>)}
-      </div>
-      <div class="disgust-block reveal"><p>{t.reason}</p><h2 id="rejection-title">{t.disgust}</h2></div>
-      <p class="question reveal">{t.questionFirst}<br /><span>{t.questionSecond}</span></p>
+      <Image class="rejection-image" src={stage} alt="" widths={[800, 1600]} sizes="100vw" format="webp" />
+      <div class="chapter-label"><span>04</span><span>{t.artist} / {song.title}</span><span>↘</span></div>
+      <div class="rejection-intro"><p class="rejected-words">{t.words.join(locale === 'zh' ? '、' : ', ')}{locale === 'zh' ? '。' : '.'}</p><p class="reason">{t.reason}</p></div>
+      <h2 id="rejection-title" class="disgust-title reveal">{t.disgust}</h2>
     </section>
 
     <section class="indifference" aria-labelledby="ending-title">
       <p class="word-stream">{t.indifferent.map(word => <span>{word}<b aria-hidden="true"> / </b></span>)}</p>
       <h2 id="ending-title" class="reveal">{t.ending}</h2>
-      <div class="end-marker"><span>04</span><span>●</span><span>END OF SIDE A</span></div>
+      <div class="end-marker"><span>05</span><span>●</span><span>END OF SIDE A</span></div>
     </section>
 
     <section class="afterimage" id="about" aria-labelledby="about-title">
+      <div class="belief reveal"><h2>{t.beliefFirst}</h2><p>{t.beliefSecond}</p></div>
       <figure class="window-frame"><Image src={windowScene} alt={t.imageWindow} widths={[800, 1440, 2000]} sizes="100vw" format="webp" /></figure>
       <div class="about-content"><p class="eyebrow">{t.personal}</p><h2 id="about-title">DoubleTree<span>．</span></h2><p class="about-intro">{t.intro}</p><p class="interests">{t.interests}</p></div>
       <footer><a href="#opening">{t.back} ↑</a><span>{t.note}</span><a href={song.officialVideoPageUrl} target="_blank" rel="noreferrer">{t.artist} ↗</a></footer>
