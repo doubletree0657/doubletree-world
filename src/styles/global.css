@@ -1,22 +1,186 @@
-:root{color-scheme:dark;--paper:#080b0e;--ink:#e6e4dc;--muted:#90989f;--line:#ffffff25;--serif:"Songti SC","Noto Serif CJK SC","Yu Mincho","Hiragino Mincho ProN",serif;font-family:Arial,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--paper);color:var(--ink);font-synthesis:none}
-*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:24px}body{margin:0}a{color:inherit;text-decoration:none}a:focus-visible{outline:2px solid #bcd7eb;outline-offset:7px}::selection{background:#89694d;color:white}img{display:block;width:100%;height:auto}figure,p,h1,h2{margin:0}button,a{-webkit-tap-highlight-color:transparent}.skip{position:fixed;top:-100px;left:20px;background:#111;padding:16px;z-index:100}.skip:focus{top:15px}
-.masthead{height:90px;padding:0 4.5%;position:absolute;inset:0 0 auto;z-index:5;display:flex;align-items:center;gap:38px;border-bottom:1px solid var(--line)}.wordmark{font-size:21px;letter-spacing:-1px;display:flex;align-items:center;gap:13px}.brand-star{font-size:26px;color:#b4c9da}.header-about{margin-left:auto;font-size:11px;letter-spacing:1px}.languages{display:flex;gap:12px;align-items:center;font-size:11px}.languages span{color:#7e898f}.languages a{padding:12px 2px;opacity:.55}.languages a[aria-current]{opacity:1;border-bottom:1px solid}
-.opening{min-height:820px;height:100svh;max-height:1200px;position:relative;isolation:isolate;overflow:hidden;background:#050b14}.stage-image{position:absolute;inset:0;height:100%;object-fit:cover;object-position:center 62%;z-index:-3}.opening-shade{position:absolute;inset:0;z-index:-2;background:linear-gradient(180deg,#030a13c9 0%,#030a1360 35%,#050b1410 55%,#050b14d9 100%)}.opening-top{position:absolute;top:120px;left:4.5%;right:4.5%;display:flex;justify-content:space-between;font-size:9px;letter-spacing:2px;color:#b6c5cd}.song-heading{position:absolute;top:24%;left:12%;right:10%}.artist{font-size:15px;letter-spacing:.35em;margin-bottom:26px}h1{font-family:var(--serif);font-weight:400;font-size:clamp(58px,7.4vw,125px);line-height:1.45;letter-spacing:.09em;text-shadow:0 3px 35px #0005}h1>span{display:block}.title-bottom{margin-left:14%}.title-period{color:#a9c3d6}.title-rule{margin-top:22px;border-top:1px solid #dbebf34d;padding-top:12px;width:65%;margin-left:14%;display:flex;justify-content:space-between;font-size:9px;letter-spacing:3px;color:#afc1ce}.opening-bottom{position:absolute;bottom:55px;left:4.5%;right:4.5%;display:flex;justify-content:flex-end;align-items:end}.monologue{text-align:right;font-family:var(--serif);font-size:15px;line-height:2;letter-spacing:.13em}.monologue em{font-style:normal;color:#d4eaff}.edge-title{position:absolute;right:28px;top:40%;writing-mode:vertical-rl;font-size:10px;letter-spacing:.3em;color:#b8c7ce}
-.chapter{padding:60px 6% 0}.chapter-label{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding-top:15px;font-size:9px;letter-spacing:2px;color:#929995}.chapter-label>span:first-child{font-family:Georgia,serif;font-size:20px}.resentment{background:#10100f;padding-bottom:100px}.resentment-composition{position:relative;padding-top:120px;min-height:850px}.vocal-frame{width:72%;position:relative;aspect-ratio:1.38;overflow:hidden}.vocal-frame img{height:100%;object-fit:cover;object-position:left center}.vocal-frame:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 60%,#10100f88)}.vocal-frame figcaption{position:absolute;bottom:18px;left:20px;font-size:8px;letter-spacing:2px;z-index:1}.hate-copy{position:absolute;right:0;top:65px;font-family:var(--serif);font-weight:400;font-size:clamp(28px,3.8vw,62px);line-height:1.8;letter-spacing:.08em;text-shadow:0 2px 24px #000}.hate-copy span,.hate-copy strong{display:block}.hate-copy strong{font-weight:400;margin-left:1em}.self-copy{position:relative;margin-top:45px;margin-left:57%;display:flex;gap:30px;align-items:start;font-family:var(--serif);font-size:clamp(17px,1.8vw,27px);line-height:2;letter-spacing:.05em}.small-cross{font-family:Arial;font-size:20px;color:#a8886e}
-.inferiority{background:#000;position:relative;min-height:650px;display:grid;place-items:center;padding:60px 0 110px}.writing-frame{width:75%;height:410px;overflow:hidden;position:relative}.writing-frame img{height:100%;object-fit:cover;object-position:center 51%;transform:scale(1.22)}.margin-number{position:absolute;left:6%;top:55px;font-size:9px;letter-spacing:2px;color:#7c7c77}.inferiority-caption{font-family:var(--serif);color:#a19f98;font-size:16px;letter-spacing:.2em}
-.rejection{background:#c7c8bd;color:#232723;padding-bottom:120px;overflow:hidden}.rejection .chapter-label{border-color:#252c2c44;color:#555d57}.scattered-words{position:relative;height:470px;margin-top:55px;font-family:var(--serif)}.word{position:absolute;font-size:clamp(65px,8.5vw,135px);font-weight:400;letter-spacing:.15em}.word small{font-family:Arial;font-size:9px;letter-spacing:1px;vertical-align:top;display:inline-block;margin:20px 0 0 10px;color:#647069}.word-0{top:5px;left:5%}.word-1{top:140px;left:37%}.word-2{top:270px;right:3%}.disgust-block{padding:70px 0 80px;border-top:1px solid #313b3533}.disgust-block p{font-size:15px;letter-spacing:.16em;margin-bottom:25px}.disgust-block h2{font-family:var(--serif);font-weight:400;font-size:clamp(40px,6.6vw,104px);letter-spacing:.05em;line-height:1.4}.question{border-left:1px solid #626b62;padding-left:28px;margin:60px 0 0 52%;font-family:var(--serif);font-size:clamp(18px,2vw,29px);line-height:1.9}.question span{color:#575f56}
-.indifference{padding:140px 6% 100px;background:#0b1014;overflow:hidden}.word-stream{font-family:var(--serif);font-size:clamp(18px,3vw,45px);display:flex;justify-content:space-between;gap:16px;color:#7e898f;flex-wrap:wrap}.word-stream b{font-weight:400;color:#3c454a;margin-left:20px}.word-stream span:last-child b{display:none}.indifference h2{font-family:var(--serif);font-size:clamp(47px,8vw,125px);font-weight:400;letter-spacing:.04em;margin:115px 0 135px;line-height:1.35}.end-marker{display:flex;justify-content:space-between;border-top:1px solid var(--line);padding-top:20px;font-size:9px;letter-spacing:2px;color:#859097}.end-marker span:nth-child(2){font-size:6px}
-.afterimage{background:#000;padding-top:50px}.window-frame{width:100%;aspect-ratio:2.3;overflow:hidden;position:relative}.window-frame img{height:100%;object-fit:cover;object-position:center 54%}.about-content{position:relative;max-width:750px;margin:30px auto 100px;text-align:center;padding:0 24px}.eyebrow{font-size:10px;letter-spacing:3px;color:#9a9c93;margin-bottom:26px}.about-content h2{font-family:Georgia,serif;font-size:clamp(48px,6vw,85px);font-weight:400;letter-spacing:-3px}.about-content h2 span{color:#b8ac85}.about-intro{max-width:430px;font-family:var(--serif);font-size:15px;line-height:2;color:#a9aaa2;margin:24px auto}.interests{font-size:10px;letter-spacing:2px;color:#777e79}footer{border-top:1px solid #ffffff20;margin:0 6%;padding:27px 0 35px;display:flex;justify-content:space-between;gap:25px;font-size:9px;letter-spacing:1px;color:#949a96}footer>span{font-size:8px;color:#666e69}
-.will-reveal{opacity:0;transform:translateY(22px);transition:opacity 1s ease,transform 1s ease}.will-reveal.is-visible{opacity:1;transform:none}.simple-page{max-width:650px;margin:15vh auto;padding:30px;line-height:1.8}.simple-page h1{font-size:48px}.simple-page a{text-decoration:underline;margin-right:20px}
-html[lang=en] .hate-copy{font-size:clamp(35px,4.5vw,70px)}html[lang=en] .self-copy{font-size:22px}html[lang=en] .word{font-size:clamp(55px,7vw,110px);letter-spacing:-.03em}html[lang=en] .disgust-block h2{font-size:clamp(40px,6.5vw,95px)}
-@media(min-width:1600px){.resentment-composition{min-height:1000px}.writing-frame{height:500px}}
-@media(max-width:900px){.opening{min-height:730px;max-height:950px}.song-heading{left:7%;right:6%;top:28%}h1{font-size:8.3vw}.title-bottom{margin-left:5%}.title-rule{margin-left:5%;width:85%}.edge-title{display:none}.resentment-composition{min-height:650px}.vocal-frame{width:85%}.hate-copy{top:75px}.self-copy{margin-left:40%}.scattered-words{height:400px}.word-2{top:250px}.question{margin-left:37%}.inferiority{min-height:550px}.writing-frame{width:100%;height:350px}}
-@media(max-width:600px){.masthead{height:74px;padding:0 6%;gap:23px}.wordmark{font-size:18px}.header-about{font-size:10px}.brand-star{font-size:22px}.opening{height:94svh;min-height:680px}.stage-image{object-position:50% center}.opening-top{top:98px;left:6%;right:6%;font-size:7px;letter-spacing:1px}.opening-top span:last-child{max-width:115px;text-align:right;line-height:1.8}.song-heading{top:29%;left:8%;right:5%}.artist{font-size:12px;margin-bottom:25px}.song-heading h1{font-size:9.1vw;letter-spacing:.04em;line-height:1.65}.title-bottom{margin-left:0}.title-rule{margin-left:0;width:91%;font-size:7px}.opening-bottom{left:8%;right:8%;bottom:32px;align-items:end}.monologue{font-size:12px;line-height:2.1;letter-spacing:.05em;max-width:72%}.chapter{padding:38px 7% 0}.chapter-label{font-size:7px;letter-spacing:1px}.chapter-label span:nth-child(2){max-width:75%;text-align:center}.resentment{padding-bottom:65px}.resentment-composition{padding-top:155px;min-height:0}.vocal-frame{width:100%;aspect-ratio:.94}.vocal-frame img{object-position:22% center}.hate-copy{top:38px;left:0;right:auto;font-size:8vw;line-height:1.9;letter-spacing:.04em}.hate-copy strong{margin-left:.5em}.self-copy{margin:30px 0 0 13%;font-size:18px;gap:16px}.inferiority{min-height:430px;padding:75px 0 60px}.writing-frame{height:220px}.writing-frame img{transform:scale(1.35)}.inferiority-caption{font-size:12px;letter-spacing:.1em}.margin-number{top:35px;font-size:7px}.rejection{padding-bottom:70px}.scattered-words{margin-top:40px;height:320px}.word{font-size:64px}.word-0{left:0}.word-1{top:110px;left:25%}.word-2{top:215px;right:0}.word small{font-size:7px}.disgust-block{padding:45px 0}.disgust-block p{font-size:12px;letter-spacing:.05em}.disgust-block h2{font-size:9vw;letter-spacing:0}.question{margin:20px 0 0 14%;font-size:18px;padding-left:20px}.indifference{padding:80px 7% 65px}.word-stream{gap:12px;font-size:18px;justify-content:start}.word-stream b{margin-left:8px}.indifference h2{font-size:10vw;margin:75px 0 95px;letter-spacing:0}.end-marker{font-size:7px}.afterimage{padding-top:20px}.window-frame{aspect-ratio:1.35}.window-frame img{object-position:50% 55%}.about-content{margin:30px auto 65px}.about-content h2{font-size:56px}.about-intro{font-size:13px;max-width:290px}.eyebrow{font-size:8px}.interests{font-size:8px}footer{flex-wrap:wrap;margin:0 7%;font-size:8px}footer>span{order:3;flex-basis:100%;font-size:7px;line-height:1.7}html[lang=en] .hate-copy{font-size:10vw}html[lang=en] .self-copy{font-size:18px}html[lang=en] .word{font-size:58px}html[lang=en] .word-1{left:15%}html[lang=en] .disgust-block h2{font-size:10vw}html[lang=en] .indifference h2{font-size:11vw}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.will-reveal{opacity:1;transform:none;transition:none}}
-
-/* The second arrangement follows the owner's connected emotional passages. */
-.future{background:#080f17;padding-bottom:90px;overflow:hidden}.future-heading{padding:100px 0 55px 5%;position:relative;z-index:1}.future-heading h2{font-family:var(--serif);font-weight:400;font-size:clamp(25px,3.5vw,54px);letter-spacing:.05em;line-height:1.8}.future-heading p{margin:24px 0 0 24%;font-family:var(--serif);font-size:clamp(17px,2vw,29px);line-height:1.8;color:#a5b6c3}.future-frame{width:94%;margin-left:6%}.future-frame img{height:auto;object-fit:contain}.youth{margin:40px 0 0 6%;font-family:var(--serif);font-size:16px;color:#929ea5;letter-spacing:.2em}.resentment-composition{min-height:0;padding-bottom:40px}.resentment .hate-copy{font-size:clamp(26px,3.4vw,54px)}
-.inferiority{display:block;place-items:normal;padding:65px 8% 100px;min-height:0}.failure{font-family:var(--serif);font-size:clamp(17px,1.8vw,27px);color:#92928c;letter-spacing:.08em;margin:95px 0 65px}.inferiority-hate{font-family:var(--serif);font-size:clamp(32px,4.8vw,76px);font-weight:400;line-height:1.8;letter-spacing:.06em;margin-left:14%}.inferiority-hate span{display:block}.inferiority-hate span+span{margin-left:1em}.inferiority-body{display:grid;grid-template-columns:1.4fr 1fr;align-items:center;gap:4%;margin:25px 0 40px}.inferiority .writing-frame{width:100%;height:350px}.inferiority-self{font-family:var(--serif);font-size:clamp(16px,1.7vw,26px);line-height:2.2;letter-spacing:.05em;color:#b6b5ac}.inferiority .question{border-color:#574b40;margin-top:0;margin-left:57%;font-size:clamp(17px,1.9vw,27px);color:#a59485}.inferiority .question span{color:#a59485}
-.rejection{position:relative;isolation:isolate;background:#09131d;color:#e6e4dc;min-height:780px;padding-bottom:120px}.rejection-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.16;z-index:-2;filter:grayscale(.45)}.rejection:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#09131df2,#09131d80);z-index:-1}.rejection .chapter-label{border-color:#ffffff25;color:#929fa8}.rejection-intro{padding:110px 0 70px 4%;font-family:var(--serif)}.rejected-words{font-size:clamp(30px,4vw,62px);letter-spacing:.12em;line-height:1.6}.reason{font-size:clamp(16px,1.8vw,27px);margin-top:35px;color:#a4b2bb;letter-spacing:.09em}.disgust-title{font-family:var(--serif);font-weight:400;letter-spacing:.04em;font-size:clamp(42px,7.3vw,116px);line-height:1.5;text-align:right;margin:25px 0 0}.indifference{background:#080c10}.indifference .word-stream{font-size:clamp(18px,2.6vw,40px)}.belief{padding:90px 9% 15px;font-family:var(--serif)}.belief h2{font-weight:400;font-size:clamp(28px,3.7vw,58px);letter-spacing:.06em;line-height:1.7}.belief p{font-size:clamp(15px,1.7vw,25px);color:#99988c;letter-spacing:.09em;margin:35px 0 0 27%;line-height:2}.afterimage .window-frame{margin-top:20px}
-@media(max-width:700px){.future{padding-bottom:55px}.future-heading{padding:65px 0 35px}.future-heading h2{font-size:24px;max-width:300px}.future-heading p{margin:22px 0 0 12%;font-size:17px;max-width:240px}.future-frame{width:100%;margin:0}.future-frame img{object-position:52% 50%}.youth{font-size:12px;margin:28px 0 0}.resentment .hate-copy{font-size:6.5vw}.resentment .hate-copy strong{margin-left:0}.resentment-composition{padding-bottom:0}.resentment .self-copy{font-size:16px;margin-left:10%}.inferiority{padding:40px 7% 70px}.failure{margin:65px 0 35px;font-size:16px}.inferiority-hate{font-size:7.6vw;margin-left:0;letter-spacing:.02em}.inferiority-hate span+span{margin-left:.5em}.inferiority-body{display:block;margin:10px 0 35px}.inferiority .writing-frame{height:240px}.inferiority-self{font-size:17px;margin-left:20%}.inferiority .question{margin:50px 0 0 8%;font-size:17px}.rejection{min-height:570px;padding-bottom:75px}.rejection-intro{padding:75px 0 50px}.rejected-words{font-size:8vw;letter-spacing:.06em}.reason{font-size:15px;margin-top:30px;letter-spacing:.03em}.disgust-title{font-size:9.4vw;text-align:left;margin-top:40px;letter-spacing:0}.rejection-image{object-position:65% center}.belief{padding:60px 7% 10px}.belief h2{font-size:26px;letter-spacing:.02em}.belief p{font-size:15px;margin:25px 0 0 15%;letter-spacing:.02em}.indifference .word-stream{font-size:17px}.indifference h2{font-size:10vw}html[lang=en] .resentment .hate-copy{font-size:8vw}html[lang=en] .inferiority-hate{font-size:9vw}html[lang=en] .disgust-title{font-size:12vw}html[lang=en] .rejected-words{font-size:7vw}html[lang=en] .inferiority-self{font-size:17px}}
-.inferiority .writing-frame img{clip-path:inset(0 0 15% 0)}
+:root {
+  color-scheme: dark;
+  --paper: #080b0e;
+  --ink: #e6e4dc;
+  --line: #ffffff25;
+  --serif: "Songti SC", "Noto Serif CJK SC", "Yu Mincho", "Hiragino Mincho ProN", serif;
+  font-family: Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-synthesis: none;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-snap-type: y mandatory; }
+body, figure, p, h1, h2 { margin: 0; }
+h2 { text-wrap: balance; }
+a { color: inherit; text-decoration: none; }
+a:focus-visible { outline: 2px solid #bcd7eb; outline-offset: 5px; }
+::selection { background: #89694d; color: white; }
+img { display: block; width: 100%; height: auto; }
+.skip { position: fixed; top: -100px; left: 20px; background: #111; padding: 16px; z-index: 100; }
+.skip:focus { top: 15px; }
+/* Each chapter owns one actual viewport, including all its text and imagery. */
+main > section {
+  height: 100svh;
+  min-height: 0;
+  position: relative;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  padding: clamp(20px, 4svh, 48px) 6%;
+}
+main > section > *, .resentment-composition > *, .inferiority-body > * { min-width: 0; min-height: 0; }
+.masthead { height: clamp(60px, 10svh, 90px); padding: 0 4.5%; position: absolute; inset: 0 0 auto; z-index: 5; display: flex; align-items: center; gap: 30px; border-bottom: 1px solid var(--line); }
+.wordmark { font-size: 21px; letter-spacing: -1px; display: flex; align-items: center; gap: 13px; }
+.brand-star { font-size: 26px; color: #b4c9da; }
+.header-about { margin-left: auto; font-size: 11px; }
+.languages { display: flex; gap: 12px; align-items: center; font-size: 11px; }
+.languages span { color: #7e898f; }
+.languages a { padding: 12px 2px; opacity: .55; }
+.languages a[aria-current] { opacity: 1; border-bottom: 1px solid; }
+.opening { isolation: isolate; overflow: hidden; background: #050b14; }
+.stage-image, .opening-shade { position: absolute; inset: 0; height: 100%; }
+.stage-image { object-fit: cover; object-position: center 62%; z-index: -3; }
+.opening-shade { z-index: -2; background: linear-gradient(180deg,#030a13c9 0%,#030a1360 35%,#050b1410 55%,#050b14d9 100%); }
+.opening-top { position: absolute; top: 14%; left: 4.5%; right: 4.5%; display: flex; justify-content: space-between; font-size: 9px; letter-spacing: 2px; color: #b6c5cd; }
+.song-heading { position: absolute; top: 24%; left: 12%; right: 10%; }
+.artist { font-size: 15px; letter-spacing: .35em; margin-bottom: 2.5svh; }
+h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(36px, min(7.4vw, 12svh), 125px); line-height: 1.45; letter-spacing: .09em; text-shadow: 0 3px 35px #0005; }
+h1 > span { display: block; }
+.title-bottom { margin-left: 14%; }
+.title-period { color: #a9c3d6; }
+.title-rule { margin-top: 2svh; border-top: 1px solid #dbebf34d; padding-top: 12px; width: 65%; margin-left: 14%; display: flex; justify-content: space-between; font-size: 9px; letter-spacing: 3px; color: #afc1ce; }
+.opening-bottom { position: absolute; bottom: 6%; right: 4.5%; left: 4.5%; display: flex; justify-content: flex-end; }
+.monologue { text-align: right; font-family: var(--serif); font-size: clamp(11px, 1.7svh, 15px); line-height: 2; letter-spacing: .13em; }
+.monologue em { font-style: normal; color: #d4eaff; }
+.edge-title { position: absolute; right: 28px; top: 40%; writing-mode: vertical-rl; font-size: 10px; letter-spacing: .3em; color: #b8c7ce; }
+.chapter-label { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--line); padding-top: 12px; font-size: 9px; letter-spacing: 2px; color: #929995; }
+.chapter-label > span:first-child { font-family: Georgia, serif; font-size: 20px; }
+.future { background: #080f17; display: grid; grid-template-columns: .85fr 1.4fr; grid-template-rows: auto 1fr auto; gap: 3svh 4%; }
+.future .chapter-label { grid-column: 1 / -1; }
+.future-heading { align-self: center; font-family: var(--serif); }
+.future-heading h2 { font-weight: 400; font-size: clamp(24px, min(3.1vw, 5svh), 50px); letter-spacing: .04em; line-height: 1.8; }
+.future-heading p { margin-top: 4svh; margin-left: 8%; font-size: clamp(16px, min(1.8vw, 3svh), 28px); line-height: 1.9; color: #a5b6c3; }
+.future-frame { grid-column: 2; grid-row: 2 / 4; }
+.future-frame img, .vocal-frame img, .window-frame img { width: 100%; height: 100%; object-fit: contain; }
+.youth { font-family: var(--serif); font-size: 14px; color: #929ea5; letter-spacing: .2em; padding-bottom: 3svh; }
+.resentment { background: #10100f; display: grid; grid-template-rows: auto minmax(0, 1fr); gap: 5svh; }
+.resentment-composition { display: grid; grid-template-columns: 1.4fr 1fr; grid-template-rows: 1fr 1fr; gap: 3svh 5%; }
+.vocal-frame { grid-row: 1 / -1; position: relative; }
+.vocal-frame figcaption { position: absolute; bottom: 0; left: 0; font-size: 8px; letter-spacing: 2px; color: #95938b; }
+.hate-copy { align-self: center; font-family: var(--serif); font-weight: 400; font-size: clamp(23px, min(3vw, 5svh), 52px); line-height: 1.9; letter-spacing: .04em; }
+.hate-copy span, .hate-copy strong { display: block; font-weight: 400; }
+.self-copy { align-self: center; display: flex; gap: 20px; font-family: var(--serif); font-size: clamp(16px, min(1.8vw, 3svh), 28px); line-height: 2; color: #beb8ac; }
+.small-cross { font-family: Arial; color: #a8886e; }
+.inferiority { background: #000; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto 1fr 2fr 1fr; gap: 2svh 5%; }
+.inferiority .chapter-label { grid-column: 1 / -1; }
+.failure { align-self: end; font-family: var(--serif); font-size: clamp(15px, min(1.8vw, 2.8svh), 27px); color: #92928c; }
+.inferiority-hate { grid-column: 1; align-self: center; font-family: var(--serif); font-weight: 400; font-size: clamp(26px, min(3.8vw, 6svh), 64px); line-height: 1.8; letter-spacing: .04em; }
+.inferiority-hate span { display: block; }
+.inferiority-hate span + span { margin-left: .5em; }
+.inferiority-body { grid-column: 2; grid-row: 2 / 5; display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: 2svh; }
+.writing-frame { position: relative; overflow: hidden; }
+.writing-frame img { height: 100%; object-fit: cover; object-position: center 52%; clip-path: inset(0 0 25%); }
+.inferiority-self { font-family: var(--serif); font-size: clamp(16px, min(1.9vw, 3svh), 29px); line-height: 2; text-align: right; color: #b6b5ac; }
+.question { align-self: start; border-left: 1px solid #574b40; padding-left: 24px; font-family: var(--serif); font-size: clamp(15px, min(1.7vw, 2.8svh), 26px); line-height: 1.9; color: #a59485; }
+.rejection { isolation: isolate; background: #09131d; display: grid; grid-template-rows: auto 1fr 1fr; gap: 4svh; }
+.rejection-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .16; z-index: -2; filter: grayscale(.45); }
+.rejection:after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg,#09131df2,#09131d80); z-index: -1; }
+.rejection-intro { align-self: center; padding-left: 4%; font-family: var(--serif); }
+.rejected-words { font-size: clamp(26px, min(4vw, 7svh), 65px); letter-spacing: .1em; line-height: 1.6; }
+.reason { font-size: clamp(16px, min(1.8vw, 3svh), 27px); margin-top: 4svh; color: #a4b2bb; letter-spacing: .06em; }
+.disgust-title { align-self: center; font-family: var(--serif); font-weight: 400; font-size: clamp(36px, min(7.3vw, 12svh), 116px); line-height: 1.5; text-align: right; }
+.indifference { background: #080c10; display: flex; flex-direction: column; justify-content: space-around; }
+.word-stream { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 15px; font-family: var(--serif); font-size: clamp(18px, min(2.6vw, 4svh), 40px); color: #7e898f; }
+.word-stream b { font-weight: 400; color: #3c454a; margin-left: 15px; }
+.word-stream span:last-child b { display: none; }
+.indifference h2 { font-family: var(--serif); font-size: clamp(40px, min(8vw, 13svh), 125px); font-weight: 400; line-height: 1.35; }
+.end-marker { display: flex; justify-content: space-between; border-top: 1px solid var(--line); padding-top: 20px; font-size: 9px; letter-spacing: 2px; color: #859097; }
+.afterimage { background: #000; display: grid; grid-template-columns: 1fr 1.2fr; grid-template-rows: 1fr 1fr auto; gap: 3svh 5%; }
+.belief { align-self: end; font-family: var(--serif); }
+.belief h2 { font-weight: 400; font-size: clamp(24px, min(3vw, 5svh), 50px); line-height: 1.7; }
+.belief p { font-size: clamp(15px, min(1.6vw, 2.6svh), 25px); color: #99988c; margin-top: 3svh; line-height: 2; }
+.window-frame { grid-column: 2; grid-row: 1 / 3; }
+.about-content { align-self: center; }
+.eyebrow { font-size: 10px; letter-spacing: 3px; color: #9a9c93; margin-bottom: 2svh; }
+.about-content h2 { font-family: Georgia, serif; font-size: clamp(40px, min(5vw, 8svh), 80px); font-weight: 400; letter-spacing: -2px; }
+.about-content h2 span { color: #b8ac85; }
+.about-intro { font-family: var(--serif); font-size: clamp(13px, 2svh, 16px); line-height: 2; color: #a9aaa2; margin-top: 2svh; }
+footer { grid-column: 1 / -1; border-top: 1px solid var(--line); padding-top: 18px; display: flex; justify-content: space-between; gap: 20px; font-size: 9px; color: #949a96; }
+footer > span { font-size: 8px; color: #666e69; }
+.will-reveal { opacity: 0; transform: translateY(12px); transition: opacity .7s ease, transform .7s ease; }
+.will-reveal.is-visible { opacity: 1; transform: none; }
+.simple-page { max-width: 650px; margin: 15vh auto; padding: 30px; line-height: 1.8; }
+.simple-page h1 { font-size: 48px; }
+.simple-page a { text-decoration: underline; margin-right: 20px; }
+html[lang=en] .hate-copy { font-size: clamp(23px, min(2.8vw, 4.5svh), 48px); }
+html[lang=en] .inferiority-hate { font-size: clamp(28px, min(4vw, 6svh), 64px); }
+@media (max-width: 700px) {
+  main > section { padding: 3svh 7%; }
+  .masthead { padding: 0 6%; gap: 20px; }
+  .wordmark { font-size: 18px; }
+  .brand-star { font-size: 22px; }
+  .header-about { font-size: 10px; }
+  .opening-top { top: 14%; left: 7%; right: 7%; font-size: 7px; letter-spacing: 1px; }
+  .opening-top span:last-child { max-width: 115px; text-align: right; }
+  .song-heading { top: 30%; left: 8%; right: 5%; }
+  h1 { font-size: 9vw; letter-spacing: .04em; }
+  .artist { font-size: 12px; }
+  .title-bottom { margin-left: 0; }
+  .title-rule { margin-left: 0; width: 91%; font-size: 7px; }
+  .edge-title { display: none; }
+  .opening-bottom { right: 8%; bottom: 5%; }
+  .monologue { font-size: 12px; letter-spacing: .03em; }
+  .chapter-label { font-size: 7px; letter-spacing: .5px; padding-top: 8px; }
+  .chapter-label > span:first-child { font-size: 17px; }
+  .chapter-label span:nth-child(2) { max-width: 80%; text-align: center; }
+  .future { grid-template-columns: 1fr; grid-template-rows: auto auto minmax(0, 1fr) auto; gap: 2svh; }
+  .future-heading { align-self: auto; padding-top: 2svh; }
+  .future-heading h2 { font-size: clamp(20px, 3svh, 27px); }
+  .future-heading p { font-size: 16px; margin: 1.5svh 0 0 10%; }
+  .future-frame { grid-column: 1; grid-row: 3; }
+  .youth { font-size: 12px; padding: 0; }
+  .resentment { gap: 2svh; }
+  .resentment-composition { grid-template-columns: 1fr; grid-template-rows: auto minmax(0, 1fr) auto; gap: 2svh; }
+  .hate-copy { grid-row: 1; font-size: clamp(21px, 3.3svh, 30px); }
+  .hate-copy strong { margin-left: 8%; }
+  .vocal-frame { grid-row: 2; }
+  .vocal-frame figcaption { font-size: 7px; }
+  .self-copy { font-size: 16px; justify-self: end; gap: 15px; }
+  .inferiority { grid-template-columns: 1fr; grid-template-rows: auto auto auto minmax(0, 1fr) auto; gap: 2svh; }
+  .failure { font-size: 15px; padding-top: 1svh; }
+  .inferiority-hate { grid-column: 1; font-size: clamp(25px, 4svh, 35px); line-height: 1.6; }
+  .inferiority-body { grid-column: 1; grid-row: 4; grid-template-columns: 1fr 1.1fr; grid-template-rows: 1fr; align-items: center; gap: 10px; }
+  .writing-frame { height: 100%; }
+  .inferiority-self { font-size: 14px; text-align: left; }
+  .question { font-size: 15px; padding-left: 16px; justify-self: end; }
+  .rejected-words { font-size: 8vw; }
+  .reason { font-size: 15px; }
+  .disgust-title { font-size: 9.5vw; text-align: left; }
+  .word-stream { justify-content: flex-start; font-size: 17px; gap: 10px; }
+  .word-stream b { margin-left: 8px; }
+  .indifference h2 { font-size: 10vw; }
+  .end-marker { font-size: 7px; }
+  .afterimage { grid-template-columns: 1fr; grid-template-rows: auto minmax(0, 1fr) auto auto; gap: 2svh; }
+  .belief h2 { font-size: clamp(22px, 3svh, 28px); }
+  .belief p { font-size: 15px; margin-top: 1svh; }
+  .window-frame { grid-column: 1; grid-row: 2; }
+  .about-content { text-align: center; }
+  .about-content h2 { font-size: clamp(36px, 6svh, 50px); }
+  .eyebrow { font-size: 8px; margin-bottom: 1svh; }
+  .about-intro { margin-top: 1svh; font-size: 13px; }
+  footer { font-size: 8px; flex-wrap: wrap; gap: 10px; padding-top: 12px; }
+  footer > span { order: 3; flex-basis: 100%; font-size: 7px; }
+  html[lang=en] .hate-copy { font-size: clamp(21px, 3svh, 28px); }
+  html[lang=en] .inferiority-hate { font-size: clamp(27px, 4svh, 35px); }
+}
+/* Very short windows and high zoom retain readable content and ordinary scrolling. */
+@media (max-height: 480px) {
+  html { scroll-snap-type: none; }
+  main > section { height: auto; min-height: 100svh; }
+  main > .opening { height: 100svh; }
+  .future-frame, .vocal-frame, .writing-frame, .window-frame { min-height: 180px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .will-reveal { opacity: 1; transform: none; transition: none; }
+}

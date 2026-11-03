@@ -58,3 +58,7 @@ Agree on the first visual direction and the minimum personal content; then revie
 ## Second arrangement, 2026-11-02
 
 The owner approved a longer connected sequence: uncertainty about the future (blue vocal still), pain and unwanted memories (amber vocal still), failure/envy/inferiority (one continuous black module), rejection (cold blue stage background), indifference, and former convictions above the window scene. The previous sage word display was removed from the active layout. New Chinese passages come from text supplied by the owner; English follows the same meaning. The opening monologue retains the owner's revised wording and the opening scroll prompt stays removed.
+
+## Viewport composition, 2026-11-03
+
+Each of the seven chapters now occupies one viewport (`100svh`), with CSS scroll snapping at chapter boundaries. Typography scales against both width and height; full live frames use `object-fit: contain` so subtitles remain visible. Desktop compositions use columns instead of stacking large images above text. Mobile layouts stack within the available height. Windows shorter than 480 CSS pixels fall back to ordinary scrolling to retain readable, accessible content. No wheel or keyboard events are intercepted. The stylesheet was consolidated to remove earlier conflicting layout rules.
